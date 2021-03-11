@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2021, Horst Eff
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license
+ * found in the LICENSE file in the root directory of this
+ * source tree.
+ */
+
 #ifndef Alphasign_h
 #define Alphasign_h
 
@@ -205,7 +214,7 @@ class Allocation
     char startTime[3];
     char stopTime[3];
 };
-  
+
 
 class Alphasign
 {
@@ -216,14 +225,14 @@ class Alphasign
     TransmissionFormat getTransmissionFormat() { return _transmissionFormat; }
     void writeText(const char* message, char label);
     void writeText(const char* message, char label, DisplayPosition position, DisplayMode mode);
-    void writeString(const char* message, char label); 
+    void writeString(const char* message, char label);
     void clearMemory(void);
     void softReset(void);
     void setTimeFormat(TimeFormat format);
     void tone(uint8_t frequency, uint8_t duration, uint8_t count);
     void setTimeOfDay(const char *buffer);
     void allocate(const Allocation* *allocations, size_t size);
-    
+
   private:
     SignType _signType;
     const char *_address;

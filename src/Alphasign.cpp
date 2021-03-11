@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2021, Horst Eff
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license
+ * found in the LICENSE file in the root directory of this
+ * source tree.
+ */
+
 #include "Alphasign.h"
 
 Allocation::Allocation(char label, FileType fileType, Lock lock, uint16_t size, const char *startTime, const char *stopTime)
@@ -138,7 +147,7 @@ size_t Alphasign::write(uint8_t b)
   if (_serial == NULL) return 0;
 
   if (b >= 0x20) return _serial->write(b);
-  
+
   if (_transmissionFormat == TransmissionFormat::TWO_BYTE)
   {
     if (_serial->write(']'))
