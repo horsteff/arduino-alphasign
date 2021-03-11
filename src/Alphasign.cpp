@@ -121,7 +121,7 @@ void Alphasign::writeSpecial(char code, const char* option, size_t size)
 
 void Alphasign::startPacket(void)
 {
-  write("\0\0\0\0\0", 5);
+  write("\0\0\0\0\0\0\0\0\0\0", 10);
   write(SOH);
   write(static_cast<char>(_signType));
   write(_address);
@@ -139,7 +139,7 @@ size_t Alphasign::write(uint8_t b)
 
   if (b >= 0x20) return _serial->write(b);
   
-  if (_transmissionFormat == TWO_BYTE)
+  if (_transmissionFormat == TransmissionFormat::TWO_BYTE)
   {
     if (_serial->write(']'))
     {
@@ -148,7 +148,7 @@ size_t Alphasign::write(uint8_t b)
     }
     else return 0;
   }
-  else if (_transmissionFormat == THREE_BYTE)
+  else if (_transmissionFormat == TransmissionFormat::THREE_BYTE)
   {
     if (_serial->write('_'))
     {

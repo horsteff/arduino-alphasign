@@ -62,7 +62,7 @@ enum class SignType : char
   ALL_WITH_26_MEMORY_FILES         = 'z'
 };
 
-typedef enum TransmissionFormat
+enum class TransmissionFormat
 {
   ONE_BYTE,
   TWO_BYTE,
@@ -210,7 +210,7 @@ class Allocation
 class Alphasign
 {
   public:
-    Alphasign(SignType signType = SignType::ALL, const char *address = "00") { _signType = signType; _address = address; _serial = NULL; _transmissionFormat = ONE_BYTE; }
+    Alphasign(SignType signType = SignType::ALL, const char *address = "00") { _signType = signType; _address = address; _serial = NULL; _transmissionFormat = TransmissionFormat::ONE_BYTE; }
     void begin(Print &serial) { _serial = &serial; }
     void setTransmissionFormat(TransmissionFormat format) { _transmissionFormat = format; }
     TransmissionFormat getTransmissionFormat() { return _transmissionFormat; }
